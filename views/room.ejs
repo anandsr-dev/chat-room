@@ -1,24 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Room</title>
-    <script defer src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
-    <script defer src="/script/room.js"></script>
-    <link rel="stylesheet" href="/style/room.css">
-</head>
+    <%- include('./partials/room.layout.ejs') %>
 <body>
     <div class="container">
-        <nav>
-            <div class="nav-btn"><h6>Chat App</h6></div>
-        </nav>
-        <main>
-            <div class="main-container">
-                
+        <%- include("./partials/header.ejs") %>
+        <div class="chatbox-container">
+            <div class="chat-rooms">
+                <% Object.keys(rooms).forEach((room) => { %>
+                    <div class="chat-room">
+                        <div>
+                            <span>
+                                <%= room %>
+                            <span>
+                        </div>
+                    </div>
+                    <% }) %>
             </div>
-        </main>
+            <div class="chatbox">
+                <div class="message-container">
+                    <div class="broadcast">
+                        <p>
+                            <%= name %> has joined the chat
+                        </p>
+                    </div>
+                    <div class="messages-container">
+                        <div class="message">
+                            <span class="author">
+                                <%= name %>
+                            </span>
+                            <p class="message-text">
+                                Hello who are you?
+                            </p>
+                        </div>
+                        <div class="self-message">
+                            <span class="author">
+                                <%= name %>
+                            </span>
+                            <p class="message-text">
+                                Hello who are you?
+                            </p>
+                        </div>
+                        <div class="input-form-container">
+                                <input id="chat-message" type="text" placeholder="Enter your name" name="name" />
+                                <button id="chat-submit" type="submit" class="intro-btn">Enter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

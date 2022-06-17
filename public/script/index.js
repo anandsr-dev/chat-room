@@ -7,8 +7,6 @@ function submit(e) {
     e.preventDefault();
     loadingScreen();
     e.submit();
-    // const name = document.getElementById("name").value;
-    // fetch(`http://localhost:3000/room?name=${name}`)
 }
 
 function loadingScreen () {

@@ -1,33 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="image/png", href="https://www.doctor2u.my/wp-content/uploads/2018/01/D2U_FBCanvas_Live_Chat-1.jpg" rel="icon">
-    <title>Chat Room</title>
-    <link rel="stylesheet" href="./style/index.css">
-    <script defer src="./script/index.js"></script>
-</head>
+    <%- include('./partials/default.layout.ejs') %>
 <body>
     <div class="container">
-        <nav>
-            <div class="nav-btn"><h6>Chat App</h6></div>
-        </nav>
+        <%- include("./partials/header.ejs") %>
         <main>
             <div class="main-container">
                 <h2>Chat with strangers!</h2>
                 <div class="name-input">
-                    <form action="/room" method="post">
+                    <form action="/rooms" method="post">
                         <input id="name" type="text" placeholder="Enter your name" name="name" />
-                        <button id="submit-button" type="submit" >Enter</button>
+                        <button id="submit-button" type="submit" class="intro-btn">Enter</button>
                     </form>
                 </div>
             </div>
         </main>
     </div>
-    <div id="loading">
+    <!-- <div id="loading">
         <h3>Loading...</h3>
-    </div>
+    </div> -->
 </body>
 </html>

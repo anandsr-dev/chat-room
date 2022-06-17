@@ -13,11 +13,21 @@ app.get('/', (req: Request, res: Response) => {
     res.render('index');
 });
 
-app.post('/room', (req: Request, res: Response) => {
-    res.render('room', { name: req.body.name });
+const rooms = {
+    primary: {
+        messages: [{}]
+    },
+}
+
+app.post('/rooms', (req: Request, res: Response) => {
+    console.log('name', req.body.name)
+    res.render('room', {
+        name: req.body.name,
+        rooms
+    });
 });
 
-app.get('/room/:room', (req: Request, res: Response) => {
+app.get('/rooms/:room', (req: Request, res: Response) => {
     res.render('room');
 });
 
