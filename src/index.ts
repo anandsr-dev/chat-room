@@ -20,7 +20,7 @@ const rooms = {
 }
 
 app.post('/rooms', (req: Request, res: Response) => {
-    console.log('name', req.body.name)
+    io.sockets.emit('user-created', req.body.name)
     res.render('room', {
         name: req.body.name,
         rooms
@@ -37,9 +37,16 @@ const port = process.env.PORT || 3000;
 
 const io = require('socket.io')(server);
 
-io.on('connection', socket => {
+io.on('connection', (socket) => {
+    socket.on('user-created', (name) => {
+        socket.username = name
+        socket.broadcast.emit('user-created', name)
+    })
+
+    socket.on('message', (message) => {
+        socket.broadcast.emit('message', message)
+    })
     console.log('connection');
-    socket.emit('user-created');
 })
 
 server.listen(port, function() {

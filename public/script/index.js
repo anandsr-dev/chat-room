@@ -11,7 +11,6 @@ function submit(e) {
 
 function loadingScreen () {
     document.getElementsByClassName("container")[0].style.opacity = "0.1";
-    console.log('called')
     let loading = document.getElementById("loading");
     loading.style.display = "block";
     submitButton.disabled = true;

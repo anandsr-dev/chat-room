@@ -1,53 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/room.layout.ejs') %>
-<body>
-    <div class="container">
-        <%- include("./partials/header.ejs") %>
-        <div class="chatbox-container">
-            <div class="chat-rooms">
-                <% Object.keys(rooms).forEach((room) => { %>
-                    <div class="chat-room">
-                        <div>
-                            <span>
-                                <%= room %>
-                            <span>
-                        </div>
+<%- include('./partials/room.layout.ejs') %>
+
+    <body>
+        <div class="container">
+            <%- include("./partials/header.ejs") %>
+                <div class="chatbox-container">
+                    <div class="chat-rooms">
+                        <% Object.keys(rooms).forEach((room)=> { %>
+                            <div class="chat-room">
+                                <div>
+                                    <span>
+                                        <%= room %>
+                                            <span>
+                                </div>
+                            </div>
+                            <% }) %>
                     </div>
-                    <% }) %>
-            </div>
-            <div class="chatbox">
-                <div class="message-container">
-                    <div class="broadcast">
-                        <p>
-                            <%= name %> has joined the chat
-                        </p>
-                    </div>
-                    <div class="messages-container">
-                        <div class="message">
-                            <span class="author">
-                                <%= name %>
-                            </span>
-                            <p class="message-text">
-                                Hello who are you?
-                            </p>
-                        </div>
-                        <div class="self-message">
-                            <span class="author">
-                                <%= name %>
-                            </span>
-                            <p class="message-text">
-                                Hello who are you?
-                            </p>
-                        </div>
-                        <div class="input-form-container">
-                                <input id="chat-message" type="text" placeholder="Enter your name" name="name" />
+                    <div class="chatbox">
+                            <div class="message-wrapper">
+                            </div>
+                            <form class="input-wrapper" id="send-form" method="post">
+                                <input id="chat-message" type="text" placeholder="Message" />
                                 <button id="chat-submit" type="submit" class="intro-btn">Enter</button>
-                        </div>
+                            </form>
                     </div>
                 </div>
-            </div>
         </div>
-    </div>
-</body>
+        <script>
+            let username = "<%- name %>"
+        </script>
+    </body>
+
 </html>
